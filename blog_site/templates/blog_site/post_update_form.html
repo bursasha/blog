@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Изменить пост {{ post.title | title }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+  <form action="{{ post.get_update_url }}" method="post" class="mt-5">
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="form-group">
+          {{ field.label }}
+          {{ field }}
+      </div>
+    {% endfor %}
+
+    <button type="submit" name="button" class="btn btn-success">
+      Изменить пост
+    </button>
+
+  </form>
+</div>
+
+{% endblock %}

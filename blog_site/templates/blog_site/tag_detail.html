@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ tag.title }} - page
+{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h1 class="mb-5 mt-2">Посты с "{{ tag.title | title }}" тегом</h1>
+  </div>
+
+  {% for post in tag.posts.all %}
+    {% include 'blog_site/includes/post_card.html' %}
+  {% endfor %}
+
+{% endblock %}
